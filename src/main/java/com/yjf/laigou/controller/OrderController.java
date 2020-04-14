@@ -36,8 +36,6 @@ public class OrderController {
         page.setTotal(total);
 
         orderItemService.stuff(os);
-        
-        
 
         model.addAttribute("os", os);
         model.addAttribute("page", page);

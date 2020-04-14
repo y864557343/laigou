@@ -3,6 +3,8 @@
 	
 <div id="carousel-of-product"  class="carousel-of-product carousel slide1" data-ride="carousel">
   <!-- Indicators -->
+  <!--轮播图-->
+
   <ol class="carousel-indicators">
     <li data-target="#carousel-of-product" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-of-product" data-slide-to="1"></li>

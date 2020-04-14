@@ -25,7 +25,7 @@
 //				$("div.registerErrorMessageDiv").css("visibility","visible");
 //				return false;
 //			}
-// 			var patrn=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;
+			var patrn=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;
 			if (!patrn.exec($("#password").val()))
 				$("span.errorMessage").html("密码由5-20位字母、数字、.和_组成");
 				$("div.registerErrorMessageDiv").css("visibility","visible");

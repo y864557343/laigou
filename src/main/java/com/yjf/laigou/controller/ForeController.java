@@ -282,7 +282,6 @@ public class ForeController {
             }
         }
 
-
         if(!flag){
             OrderItem orderItem = new OrderItem();
             orderItem.setUid(user.getId());
@@ -322,7 +321,6 @@ public class ForeController {
                 otsc.update(orderItem);
                 break;
             }
-
         }
         return "success";
     }
@@ -501,5 +499,3 @@ public class ForeController {
     }
 
 }
-
-

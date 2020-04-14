@@ -169,7 +169,7 @@ $(function(){
 
             <div class="productPriceDiv">
                 <div class="gouwujuanDiv"><%--<img height="16px" src="img/site/gouwujuan.png">--%><span style="color: red">来购购物券</span>
-                <span> 全来购实物商品通用</span>
+                <span> 全场来购实物商品通用</span>
                  
                 </div>
                 <div class="originalDiv">
