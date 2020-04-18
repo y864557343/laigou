@@ -161,15 +161,15 @@ $(function(){
 
         <div class="productPrice">
             <div class="juhuasuan">
-                <span class="juhuasuanBig" >聚划算</span>
-                <span>此商品即将参加聚划算，<span class="juhuasuanTime">1天19小时</span>后开始，</span>
+                <span class="juhuasuanBig" >来购超划算</span>
+                <span>此商品即将参加来购超划算，<span class="juhuasuanTime">1天7小时</span>后开始，</span>
             </div>
 
 
 
             <div class="productPriceDiv">
                 <div class="gouwujuanDiv"><%--<img height="16px" src="img/site/gouwujuan.png">--%><span style="color: red">来购购物券</span>
-                <span> 全来购实物商品通用</span>
+                <span> 全场来购实物商品通用</span>
                  
                 </div>
                 <div class="originalDiv">

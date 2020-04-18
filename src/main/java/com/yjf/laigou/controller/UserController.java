@@ -22,7 +22,7 @@ public class UserController {
     @RequestMapping("admin_user_list")
     public String list(Model model, Page page){
         PageHelper.offsetPage(page.getStart(),page.getCount());
-
+        //查找用户
         List<User> us= userService.list();
 
         int total = (int) new PageInfo<>(us).getTotal();
@@ -32,6 +32,22 @@ public class UserController {
         model.addAttribute("page", page);
 
         return "admin/listUser";
+    }
+    @RequestMapping("admin_user_add")
+    public String add(User user){
+
+        List<User> us= userService.list();//查找用户
+        for (User s:us
+        ) {
+            if(s.getName().equalsIgnoreCase(user.getName())){
+
+                return "admin/listUser";
+            }
+        }
+
+        userService.add(user);
+
+        return "redirect:/admin_user_list";
     }
 
 }

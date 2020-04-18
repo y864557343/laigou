@@ -3,6 +3,8 @@
 	
 <div id="carousel-of-product"  class="carousel-of-product carousel slide1" data-ride="carousel">
   <!-- Indicators -->
+  <!--轮播图-->
+
   <ol class="carousel-indicators">
     <li data-target="#carousel-of-product" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-of-product" data-slide-to="1"></li>
@@ -16,14 +18,14 @@
       <img class="carousel carouselImage" src="img/lunbo/7.png" >
     </div>
     <div class="item">
-      <img  class="carouselImage" src="img/lunbo/2.jpg" >
+      <img  class="carouselImage" src="img/lunbo/3.jpg" >
     </div>
     <div class="item">
-		<img  class="carouselImage" src="img/lunbo/9.png" >
+		<img  class="carouselImage" src="img/lunbo/8.png" >
     </div>
 
     <div class="item">
-        <img  class="carouselImage" src="img/lunbo/8.png" >
+        <img  class="carouselImage" src="img/lunbo/9.png" >
     </div>
 
   </div>

@@ -161,8 +161,8 @@ $(function(){
 
         <div class="productPrice">
             <div class="juhuasuan">
-                <span class="juhuasuanBig" >聚划算</span>
-                <span>此商品即将参加聚划算，<span class="juhuasuanTime">1天19小时</span>后开始，</span>
+                <span class="juhuasuanBig" >来购超划算</span>
+                <span>此商品即将参加来购超划算，<span class="juhuasuanTime">1天7小时</span>后开始，</span>
             </div>
 
 
