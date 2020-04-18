@@ -40,6 +40,31 @@
 		<%@include file="../include/admin/adminPage.jsp" %>
 	</div>
 
+	<div class="panel panel-warning addDiv">
+		<div class="panel-heading">新增用户</div>
+		<div class="panel-body">
+			<form method="post" id="addForm" action="admin_user_add" enctype="multipart/form-data">
+				<table class="addTable">
+					<tr>
+						<td>用户名称</td>
+						<td><input  id="name" name="name" type="text" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>用户密码</td>
+						<td>
+							<input id="password"  type="password" name="password" />
+						</td>
+					</tr>
+					<tr class="submitTR">
+						<td colspan="2" align="center">
+							<button type="submit" class="btn btn-success">提 交</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
 
 </div>
 

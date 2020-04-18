@@ -10,7 +10,7 @@
  Target Server Version : 110200
  File Encoding         : 65001
 
- Date: 23/03/2020 17:30:34
+ Date: 18/04/2020 19:53:11
 */
 
 
@@ -20,7 +20,7 @@
 DROP TABLE "SCOTT"."BBS";
 CREATE TABLE "SCOTT"."BBS" (
   "ID" NUMBER(6) NOT NULL ,
-  "CONTENT" VARCHAR2(200 BYTE) DEFAULT NULL ,
+  "CONTENT" VARCHAR2(300 BYTE) DEFAULT NULL ,
   "USERID" NUMBER(6) DEFAULT NULL ,
   "PID" NUMBER(6) DEFAULT NULL ,
   "CREATE_DATE" DATE 
@@ -45,7 +45,11 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Records of "BBS"
 -- ----------------------------
+INSERT INTO "SCOTT"."BBS" VALUES ('448', '上屏很不与错', '8', '30', TO_DATE('2020-04-18 16:18:59', 'SYYYY-MM-DD HH24:MI:SS'));
 INSERT INTO "SCOTT"."BBS" VALUES ('63', '太贵了', '8', '29', TO_DATE('2019-11-26 19:21:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."BBS" VALUES ('428', '电视机到货了，还没开箱，过几天再来评价', '8', '30', TO_DATE('2020-04-17 20:07:12', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."BBS" VALUES ('263', '色差这么严重，还说非质量问题不给退货，找了售后服务来了个所谓的专业人士，说这样的效果已经是最好的了。好吧，这两千多我认栽了。可能是因为价位的问题，便宜没好货，想买的自己看清图片上投屏的色差自己决定买不买，以免重蹈覆辙了。非常失望的一次购物。', '8', '30', TO_DATE('2020-04-17 12:50:26', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."BBS" VALUES ('260', '安装感受：方便，一挂就好！ 视听效果：画面清晰，音响也还行，夏普液晶面板品质保证！', '8', '30', TO_DATE('2020-04-17 12:42:38', 'SYYYY-MM-DD HH24:MI:SS'));
 
 -- ----------------------------
 -- Table structure for CATEGORY
@@ -99,7 +103,7 @@ INSERT INTO "SCOTT"."CATEGORY" VALUES ('24', '平板电视');
 DROP TABLE "SCOTT"."ORDER_";
 CREATE TABLE "SCOTT"."ORDER_" (
   "ID" NUMBER(6) NOT NULL ,
-  "ONUMBER" VARCHAR2(255 BYTE) DEFAULT NULL ,
+  "ONUMBER" VARCHAR2(255 BYTE) DEFAULT NULL NOT NULL ,
   "DIZHI" VARCHAR2(255 BYTE) DEFAULT NULL ,
   "POST_CODE" VARCHAR2(255 BYTE) DEFAULT NULL ,
   "RECIPIENTS" VARCHAR2(255 BYTE) DEFAULT NULL ,
@@ -128,18 +132,31 @@ PARALLEL 1
 NOCACHE
 DISABLE ROW MOVEMENT
 ;
+COMMENT ON COLUMN "SCOTT"."ORDER_"."ONUMBER" IS '订单号';
 
 -- ----------------------------
 -- Records of "ORDER_"
 -- ----------------------------
 INSERT INTO "SCOTT"."ORDER_" VALUES ('43', '201911241740032056556', '1', '212300', '1', '15557002779', NULL, TO_DATE('2019-11-24 17:40:03', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, NULL, '8', 'delete');
-INSERT INTO "SCOTT"."ORDER_" VALUES ('44', '201911241745274589012', '1', '212300', '1', '15557002779', NULL, TO_DATE('2019-11-24 17:45:27', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, NULL, '8', 'waitPay');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('44', '201911241745274589012', '1', '212300', '1', '15557002779', NULL, TO_DATE('2019-11-24 17:45:27', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, NULL, '8', 'delete');
 INSERT INTO "SCOTT"."ORDER_" VALUES ('46', '201911241746073666724', '1', '312300', 'q', '15557002779', NULL, TO_DATE('2019-11-24 17:46:07', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, NULL, '8', 'delete');
 INSERT INTO "SCOTT"."ORDER_" VALUES ('48', '201911241747481015085', '1', '312300', '1', '15557002779', NULL, TO_DATE('2019-11-24 17:47:48', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-24 18:57:58', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-24 18:59:06', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-29 12:54:18', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'delete');
 INSERT INTO "SCOTT"."ORDER_" VALUES ('82', '201911291333410049326', '123', '312300', '1', '15557002779', NULL, TO_DATE('2019-11-29 13:33:41', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-29 13:33:43', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-29 13:35:31', 'SYYYY-MM-DD HH24:MI:SS'), NULL, '8', 'delete');
-INSERT INTO "SCOTT"."ORDER_" VALUES ('84', '20191204103741681970', '南京', '312300', 'xxq', '12345678977', '物流快点', TO_DATE('2019-12-04 10:37:41', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-12-04 10:37:50', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-12-04 10:38:46', 'SYYYY-MM-DD HH24:MI:SS'), NULL, '8', 'waitConfirm');
-INSERT INTO "SCOTT"."ORDER_" VALUES ('50', '201911241759171163978', '1', '312300', '1', '15557002779', NULL, TO_DATE('2019-11-24 17:59:17', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-24 17:59:20', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-24 18:59:04', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-26 19:20:35', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'finish');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('84', '20191204103741681970', '南京', '312300', 'xxq', '12345678977', '物流快点', TO_DATE('2019-12-04 10:37:41', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-12-04 10:37:50', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-12-04 10:38:46', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-12 22:33:09', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('427', '202004172004233996220', '宁波财经', '312300', '1', '15557002779', '请轻拿轻放', TO_DATE('2020-04-17 20:04:23', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 20:04:32', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 20:05:48', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 20:06:31', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('447', '202004181617011992785', '宁波财经学院', '312300', '虞佳飞', '15557002779', '快带你发货啊', TO_DATE('2020-04-18 16:17:01', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-18 16:17:12', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-18 16:21:23', 'SYYYY-MM-DD HH24:MI:SS'), NULL, '445', 'waitConfirm');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('50', '201911241759171163978', '1', '312300', '1', '15557002779', NULL, TO_DATE('2019-11-24 17:59:17', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-24 17:59:20', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-24 18:59:04', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-26 19:20:35', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('430', '202004172107539112573', '宁b', '312300', '鱼鱼鱼', '15557002779', '粉红色的监控和', TO_DATE('2020-04-17 21:07:53', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:08:02', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:09:21', 'SYYYY-MM-DD HH24:MI:SS'), NULL, '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('432', '20200417211543497414', '千万', '312300', '鱼鱼鱼', '15557002779', '的缺点', TO_DATE('2020-04-17 21:15:43', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:16:20', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('434', '202004172122463091217', '宁波财经学院', '312300', '虞佳飞', '15557002779', '物流快点哦', TO_DATE('2020-04-17 21:22:46', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:22:47', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('435', '202004172123072536568', '宁波财经学院', '312300', '虞佳飞', '15557002779', '发顺丰哦', TO_DATE('2020-04-17 21:23:07', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-18 16:18:31', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, '8', 'waitDelivery');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('437', '202004172124184119029', '宁波财经学院', '312300', '虞佳飞', '15557002779', '请轻拿轻放', TO_DATE('2020-04-17 21:24:18', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:24:19', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, '8', 'waitDelivery');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('439', '202004172125018877783', '宁波财经学院', '312300', '虞佳飞', '15557002779', '没啥想说的', TO_DATE('2020-04-17 21:25:01', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:25:03', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:26:12', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:26:28', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'waitReview');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('441', '202004172125541338676', '宁波财经学院', '312300', '虞佳飞', '15557002779', '不要给次品哦', TO_DATE('2020-04-17 21:25:54', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:25:55', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 21:26:09', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-18 16:18:22', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'finish');
 INSERT INTO "SCOTT"."ORDER_" VALUES ('80', '201911291251553809944', '12', '312300', '1', '15557002772', NULL, TO_DATE('2019-11-29 12:51:55', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-29 12:52:01', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-11-29 12:52:47', 'SYYYY-MM-DD HH24:MI:SS'), NULL, '78', 'waitConfirm');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('97', '20200324201551552669', '浙江', '312300', '鱼鱼鱼', '15557002779', NULL, TO_DATE('2020-03-24 20:15:51', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, NULL, '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('107', '202003242035581931677', '浙江', '312300', '鱼鱼鱼', '15557002779', '别摔坏了', TO_DATE('2020-03-24 20:35:58', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-03-24 20:36:00', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL, '8', 'delete');
+INSERT INTO "SCOTT"."ORDER_" VALUES ('259', '202004171241148625328', '晶盛机电', '312300', '虞佳飞', '15557002779', '请寄顺丰哦！', TO_DATE('2020-04-17 12:41:14', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 12:41:21', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 12:47:09', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2020-04-17 12:48:03', 'SYYYY-MM-DD HH24:MI:SS'), '8', 'delete');
 
 -- ----------------------------
 -- Table structure for ORDER_ITEM
@@ -181,11 +198,20 @@ INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('41', '30', '44', '8', '1');
 INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('45', '30', '46', '8', '1');
 INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('47', '30', '48', '8', '1');
 INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('83', '30', '84', '8', '1');
-INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('88', '30', NULL, '8', '3');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('88', '30', '259', '8', '3');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('96', '29', '97', '8', '2');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('426', '30', '427', '8', '3');
 INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('49', '29', '50', '8', '1');
 INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('81', '30', '82', '8', '1');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('440', '30', '441', '8', '1');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('446', '30', '447', '445', '1');
 INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('79', '30', '80', '78', '1');
-INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('86', '28', NULL, '8', '1');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('429', '30', '430', '8', '2');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('89', '34', '107', '8', '2');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('431', '30', '432', '8', '4');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('436', '30', '437', '8', '1');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('433', '30', '435', '8', '1');
+INSERT INTO "SCOTT"."ORDER_ITEM" VALUES ('438', '30', '439', '8', '1');
 
 -- ----------------------------
 -- Table structure for PRODUCT
@@ -221,6 +247,25 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Records of "PRODUCT"
 -- ----------------------------
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('174', '花花公子男鞋夏季小白鞋男士休闲鞋白鞋板鞋白色平底百搭鞋子男潮', '天猫正品 百搭小白鞋 顺丰包邮', '330', '313.5', '44', '11', TO_DATE('2020-04-17 09:01:40', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('175', '花花公子皮鞋男士商务休闲男鞋夏季英伦真皮系带休闲鞋男板鞋子', '高端大气 商务休闲 时尚潮流 全国包邮 赠运费险', '368', '294.4', '23', '11', TO_DATE('2020-04-17 09:01:40', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('176', '酷队秋季运动鞋情侣鞋跑步鞋潮男鞋子透气休闲鞋飞织低帮潮鞋系带', NULL, '328', '229.6', '73', '11', TO_DATE('2020-04-17 09:01:40', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('177', '木林森夏季男鞋休闲鞋男英伦真皮男士休闲皮鞋圆头系带青年潮鞋子', '头层牛皮 时尚休闲 韩版潮流 型男必备', '326', '293.4', '96', '11', TO_DATE('2020-04-17 09:01:40', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('178', '拉夏贝尔puella普埃拉2016休闲修身五分袖一字领收腰套装20007986', NULL, '369', '350.55', '71', '10', TO_DATE('2020-04-17 09:06:16', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('179', '拉夏贝尔 7m莫丽菲尔2016秋新款条纹五分袖连衣裙套装女70006522', '8月3日 新品', '399', '299.25', '79', '10', TO_DATE('2020-04-17 09:06:16', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('180', '女巫2016欧洲站夏季新品欧美时尚绣花衬衣上衣九分裤两件套装高端', '女巫高端定制 欧美时尚 两件套', '928', '835.2', '29', '10', TO_DATE('2020-04-17 09:06:16', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('181', '妖精的口袋P360度漂浮秋装欧美半身裙短款外套时尚套装女两件套', '口袋特殊材质 拼接 品质扣子 水洗色 套装', '399', '319.2', '73', '10', TO_DATE('2020-04-17 09:06:16', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('182', '妖精的口袋P几枚礼物秋装甜美连帽短外套印花休闲裤时尚套装女', '帽里撞色 植绒抽绳装饰 质感吊钟 图案印花 套装', '339', '322.05', '87', '10', TO_DATE('2020-04-17 09:06:16', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('183', '新款男士偏光太阳镜日夜两用墨镜潮运动开车专用驾驶偏光镜夜视镜', '时尚新款 铝镁纤维镜架 科技动感', '580', '551', '91', '9', TO_DATE('2020-04-17 09:07:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('184', '变色眼镜男女款半框太阳镜大框潮流防辐射防紫外防蓝光近视镜护目', NULL, '200', '170', '77', '9', TO_DATE('2020-04-17 09:07:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('185', '帕莎Prsr太阳镜女偏光镜潮范冰冰同款女士眼镜可配近视墨镜T60017', '镜片 防紫外线 超轻材质 记忆材质', '780', '624', '86', '9', TO_DATE('2020-04-17 09:07:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('186', '陌森太阳眼镜男女2016偏光定制驾驶近视墨镜有带度数的莫森MS8006', '加拍镜片可配 近视： 原装无度数！ 顺丰包邮', '798', '518.7', '45', '9', TO_DATE('2020-04-17 09:07:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('187', '好先生同款墨镜孙红雷偏光男士太阳镜韩明星女款圆脸方框金属近视', '偏光 圆脸 方框', '150', '97.5', '84', '9', TO_DATE('2020-04-17 09:07:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('188', '惠尔顿儿童安全座椅isofix硬接口汽车用安全坐椅9个月-12岁酷睿宝', '双接口固定 夏克立推荐 好评如潮', '2848', '1993.6', '52', '3', TO_DATE('2020-04-17 09:07:53', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('189', '好孩子汽车儿童安全座椅goodbaby9个月－12岁宝宝座椅cs668侧碰王', '开团3秒半价 475元 提前购买 咨询客服', '1999', '1199.4', '89', '3', TO_DATE('2020-04-17 09:07:53', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('190', 'REEBABY儿童安全座椅9个月-12岁宝宝婴儿汽车用坐椅车载 3C认证', '睿睿熊定制款 合金钢骨架 全国包邮', '1280', '1216', '71', '3', TO_DATE('2020-04-17 09:07:53', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('191', 'REEBABY汽车儿童安全座椅ISOFIX 0-4-6-12岁婴儿宝宝新生儿可躺', '165度超大 躺角 0-12岁 正反双向 安装', '1680', '1344', '59', '3', TO_DATE('2020-04-17 09:07:53', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('192', '新生儿婴儿提篮式安全座椅汽车用车载儿童安全坐椅宝宝摇篮便携式', '法国畅销品牌 ITW卡扣 环保针织面料', '980', '882', '16', '3', TO_DATE('2020-04-17 09:07:53', 'SYYYY-MM-DD HH24:MI:SS'));
 INSERT INTO "SCOTT"."PRODUCT" VALUES ('26', 'Konka/康佳 LED32S1卧室32吋安卓智能无线WIFI网络液晶平板电视机', '32吋电视机 8核智能 网络 全国联保 送货上门', '1699', '1388', '94', '24', TO_DATE('2019-11-24 17:31:17', 'SYYYY-MM-DD HH24:MI:SS'));
 INSERT INTO "SCOTT"."PRODUCT" VALUES ('27', 'Hisense/海信 LED49EC320A 49吋led液晶电视机智能网络平板电视50', '新品特惠 十核智能 内置WiFi 咨询有惊喜', '2799', '1679.4', '90', '24', TO_DATE('2019-11-24 17:34:04', 'SYYYY-MM-DD HH24:MI:SS'));
 INSERT INTO "SCOTT"."PRODUCT" VALUES ('28', 'Hisense/海信 LED40EC520UA 40英寸4K智能平板液晶电视机WIFI网络', '周末 特惠 2189 元还送 精美礼品', '2399', '1439.4', '82', '24', TO_DATE('2019-11-24 17:34:04', 'SYYYY-MM-DD HH24:MI:SS'));
@@ -230,6 +275,64 @@ INSERT INTO "SCOTT"."PRODUCT" VALUES ('31', '乐洁士智能马桶高品质全�
 INSERT INTO "SCOTT"."PRODUCT" VALUES ('32', '箭牌马桶/ARROW AB1118脲醛盖板连体喷射虹吸式坐便器座便器正品', '领券更优惠 品质脲醛盖 千城送装 送安装配件', '1976', '1482', '65', '23', TO_DATE('2019-11-24 17:36:00', 'SYYYY-MM-DD HH24:MI:SS'));
 INSERT INTO "SCOTT"."PRODUCT" VALUES ('33', '纳蒂兰卡1066卫浴漩冲虹吸式马桶350坑距坐便器可配智能盖座便器', '盖板易拆 送全套配件 500区县 送货入户安装', '1670', '1503', '93', '23', TO_DATE('2019-11-24 17:36:00', 'SYYYY-MM-DD HH24:MI:SS'));
 INSERT INTO "SCOTT"."PRODUCT" VALUES ('34', '德国DGPOSY超漩式彩色马桶缓降坐便器静音节水抽水马桶连体座便器', '纳米自洁釉 漩涡排污 静音节水 净重50kg', '2399', '1799.25', '79', '23', TO_DATE('2019-11-24 17:36:00', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('24', '创维55A20 55英寸4K高清全面屏智能网络社交智慧屏液晶平板电视机', '云眼AI摄像头/JBL全域音响系统/免遥控声控', '5999', '4799', '128', '24', NULL);
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('35', '纳蒂兰卡 1082卫浴洁具 钻石切边 坐便器 虹吸式抽水马桶 座便器', '高性价比 造型新颖 钻石品质 时尚尊贵 好评如潮', '1900', '1710', '64', '23', TO_DATE('2020-04-17 00:00:00', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('111', '新款布艺沙发 可拆洗大小户型客厅简约家居贵妃组合L型转角布沙发', NULL, '5198', '3638.6', '94', '22', TO_DATE('2020-04-17 08:09:34', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('119', '凯米蒂亚欧式真皮沙发组合客厅奢华转角皮艺蓝色沙发美式实木家具', '匠心独运 欧式美式设计 头层真皮 三包到家', '18398', '11038.8', '27', '22', TO_DATE('2020-04-17 08:14:20', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('120', '南台布艺沙发组合可拆洗简约现代客厅整装家具布艺沙发组合大户型', '16CM坐垫 16CM坐垫 重要的 事情 说三遍', '6576', '4274.4', '63', '22', TO_DATE('2020-04-17 08:14:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('121', '依然美佳欧式布艺沙发组合可拆洗新款实木雕花大户型奢华别墅家具', '高档户型客厅 精湛雕花工艺 实木框架 经典款式', '10012', '7008.4', '51', '22', TO_DATE('2020-04-17 08:29:25', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('122', '雅居汇欧式沙发组合实木雕花客厅高档奢华大户型住宅家具布艺沙发', '热卖推荐 端庄大气 四色可选 五年质保 品质服务', '32450', '22715', '51', '22', TO_DATE('2020-04-17 08:29:25', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('123', 'Vatti/华帝 DDF60-i14007 60升遥控电储水式电热水器家用速热洗澡', '热水器狂欢 专享特价 送货入户 免费安装', '2399', '1439.4', '80', '21', TO_DATE('2020-04-17 08:30:52', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('124', 'Haier/海尔 EC6005-T+  60升电热水器  洗澡淋浴 防电墙 送装同步', '3D速热 即用即洗 遥控智能控制 预约洗', '1999', '1299.35', '37', '21', TO_DATE('2020-04-17 08:30:52', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('125', '哆啦A梦weber I2-80 威博电热水器80升储水式智能速热洗澡淋浴60', '阿里智能 每天限送 20份大礼包 全国联保 包邮', '1799', '1079.4', '79', '21', TO_DATE('2020-04-17 08:30:52', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('126', 'Vanward/万和 DSCF50-C32双盾电热水器速热联保安装 洗澡 50L省电', '搪瓷超强内胆 高效节能 迅电速热 双盾保护', '999', '699.3', '17', '21', TO_DATE('2020-04-17 08:30:52', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('127', 'Haier/海尔 EC8003-I/80升洗澡淋浴/储热电热水器防电墙/送货入户', '机控遥控 一级节能 自动关机 触摸智能控制', '1799', '1169.35', '71', '21', TO_DATE('2020-04-17 08:30:52', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('128', '乐行天下R1N智能电动平衡车双轮成人思维体感车两轮儿童代步车', '12期免息 智能显示屏 APP遥控 双轮平衡', '15960', '11970', '15', '20', TO_DATE('2020-04-17 08:31:56', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('129', '乐途智能电动悬浮滑板车太空轮平行车蓝牙自平衡独轮代步车', '电动平衡 独轮滑板 蓝牙播放 新潮代步车', '3885', '3690.75', '70', '20', TO_DATE('2020-04-17 08:31:56', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('130', '瑞士米高micro g-bike+ chopper儿童平衡车二轮自行车', NULL, '899', '809.1', '13', '20', TO_DATE('2020-04-17 08:31:56', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('131', '力达康成人电动滑板车折叠锂电池迷你型可折叠两轮代步车', '可折叠 退货赔运费 续航50 公里更轻更远', '4160', '2912', '82', '20', TO_DATE('2020-04-17 08:31:56', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('132', '两轮平衡车双轮儿童思维漂移电动扭扭车智能滑板车成人体感代步车', NULL, '889', '755.65', '64', '20', TO_DATE('2020-04-17 08:31:56', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('133', '洁霸BF522多功能洗地机刷地机酒店家用地毯清洗机 擦地机抛光机', '纯铜电机 厂家直销 售后无忧', '1900', '1235', '39', '19', TO_DATE('2020-04-17 08:44:26', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('134', 'Proscenic Swan天鹅扫地机器人 智能家用擦地机拖地全自动吸尘器', '非常夏日 直降300元 WIFI智控 卷吸互换', '6580', '4935', '65', '19', TO_DATE('2020-04-17 08:44:26', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('135', '海尔拖地机器人家用全自动擦地机湿拖扫洗地电动智能懒人无线超薄', '仿人跪式 干湿两拖 自动充电 精准导航 规划清洁', '3999', '2999.25', '30', '19', TO_DATE('2020-04-17 08:44:26', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('136', '莱克扫地吸尘器 家用超薄拖地机器人WR10智能静音全自动', '新品上市 3000pa 大吸力 无惧毛发缠绕', '1299', '974.25', '11', '19', TO_DATE('2020-04-17 08:44:26', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('137', '公众智能扫地机器人家用全自动电动清洁地毯擦拖地一体机吸尘器', '扫拖一体 纤薄高效锂电 限时疯抢 不缠毛发', '2499', '2124.15', '88', '19', TO_DATE('2020-04-17 08:44:26', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('138', 'Philips/飞利浦榨汁机原汁家用HR1884多功能水果冰淇淋机慢汁机', NULL, '2899', '1884.35', '40', '18', TO_DATE('2020-04-17 08:45:34', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('139', 'Whirlpool/惠而浦WJU-VP152B原汁机多功能家用大口径料理榨果汁机', '整投整榨 原汁无氧化 纯铜电机 三挡压榨', '1099', '824.25', '22', '18', TO_DATE('2020-04-17 08:45:34', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('140', 'Ranbem/瑞本611原汁机大口径低慢速榨汁家用水果汁迷你豆浆机电动', '新款上市 96mm口径 45慢磨转速 出汁率高', '2680', '2278', '35', '18', TO_DATE('2020-04-17 08:45:34', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('141', 'AUX/奥克斯 AUX-Y3802原汁机低速 慢磨水果榨汁机果汁机', NULL, '999', '799.2', '50', '18', TO_DATE('2020-04-17 08:45:34', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('142', '惠而浦WJU-VS208J原汁机家用慢榨多功能榨汁机果汁机豆浆机炸汁机', '大功率慢榨 浓度调节 噪音小 易清洗 快捷清洗', '1499', '1124.25', '35', '18', TO_DATE('2020-04-17 08:45:34', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('143', 'MeiLing/美菱 BCD-560WUCX对开门电冰箱家用冰箱WIFI智能风冷无霜', '家用冰箱 WIFI智能 风冷无霜', '3399', '3059.1', '54', '17', TO_DATE('2020-04-17 08:46:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('144', 'FRESTECH/新飞 BCD-286WDKSM阿里云智能wifi风冷无霜智控两门冰箱', '阿里云智能 远程WIFI 智控 风冷无霜', '3599', '2879.2', '68', '17', TO_DATE('2020-04-17 08:46:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('145', 'Konka/康佳 BCD-558WEGY5SWT对开冰箱家用一级节能风冷无霜电冰箱', '阿里云智能 风冷无霜 大容量 一级能效节能', '3000', '1800', '74', '17', TO_DATE('2020-04-17 08:46:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('146', '【阿里智能】Galanz/格兰仕 BCD-251WTHG(T) 三门电冰箱251升风冷', '风冷无霜 一级能效 智能控温 菱格面板 立体风', '3299', '2474.25', '63', '17', TO_DATE('2020-04-17 08:46:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('147', 'Haier/海尔 BCD-618WDVGU1海尔变频对开门风冷智能控温双门电冰箱', '手机智能控制 玫瑰金外观 杀菌净味系统 变频', '6999', '5949.15', '22', '17', TO_DATE('2020-04-17 08:46:21', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('148', 'AUX/奥克斯 KFR-26GW/BpTYC19+1大1匹高端智能云变频冷暖挂机空调', '30秒速冷 一级能效 ECO节能 阿里智能 除湿', '3799', '2659.3', '15', '16', TO_DATE('2020-04-17 08:52:01', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('149', 'Kelon/科龙 KFR-26GW/EFQRA2(1N20) 大1匹二级变频智能冷暖挂机', '二级变频 阿里智能 高效除甲醛 快速制冷暖', '2599', '1559.4', '78', '16', TO_DATE('2020-04-17 08:52:01', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('150', 'TCL KFRd-35GW/EP13 大1.5匹冷暖电辅空调1.5P挂机定频壁挂式包邮', '快速冷暖 四重静音 每日前5名 好礼2选1', '2399', '1679.3', '64', '16', TO_DATE('2020-04-17 08:52:01', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('151', 'Panasonic/松下 KFR-36GW/BpSJ1S大1.5匹直流变频冷暖挂式空调', '原装变频压缩 机静音除雾霾 送货入户 0元分期', '3999', '3599.1', '59', '16', TO_DATE('2020-04-17 08:52:01', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('152', 'Panasonic/松下 KFR-36GW/SH2-1大1.5匹二级能效静音空调挂机', '原装压缩机 品质保证 二级能效', '3399', '3059.1', '71', '16', TO_DATE('2020-04-17 08:52:01', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('153', '正品雷克斯韩版简约时尚潮流真皮石英情侣表女士手表女表皮带防水', '时尚之选 做精致女人 精美包装 支持货到付款', '1280', '896', '82', '15', TO_DATE('2020-04-17 08:53:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('154', '正港手表女四叶草防水手链表简约潮流学生女表韩版时尚石英表正品', '热销万只 4.9分好评 代写贺卡 质保一年', '143.71', '114.968', '23', '15', TO_DATE('2020-04-17 08:53:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('155', '罗宾 钢带女表 女士腕表 水钻夜光防水石英表 潮流时尚复古手表女', '正品 水钻刻度 钢带女表 买一送三 赠送运费险', '990', '792', '54', '15', TO_DATE('2020-04-17 08:53:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('156', '浪铂正品长方形手表女表皮带时尚潮流石英表防水真皮学生休闲腕表', '今日拍下 自动减30 送真皮表带 石榴石手链', '998', '598.8', '81', '15', TO_DATE('2020-04-17 08:53:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('157', '宾格手表正品女式精钢腕表大表盘全自动机械表防水情侣表女表真皮', '陈小春代言 宾格正品 情侣手表 同款还有男表', '488', '341.6', '16', '15', TO_DATE('2020-04-17 08:53:11', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('158', '依伦新款超薄手表 男表真皮带休闲时尚男士腕表潮流防水石英表', '简约两针 深度防水 进口机芯 送真皮表带 运费险', '1280', '1024', '64', '14', TO_DATE('2020-04-17 08:58:43', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('159', '【入门】西铁城CITIZEN新品超值体验机械手表男表NH8350-59AB/EB', '全国联保 3期0利息 大气简约 新品', '1700', '1445', '60', '14', TO_DATE('2020-04-17 08:58:43', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('160', '正品手表男精钢商务休闲男士手表石英表时尚潮流夜光超薄男表防水', '机构质检 防水夜光 赠送皮表带 特价抢购', '699', '489.3', '34', '14', TO_DATE('2020-04-17 08:58:43', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('161', '正品名仕爵手表男机械表夜光精钢防水大表盘 全自动时尚潮流男表', '终身保修 正品 全自动 机械表 镂空机械表', '1900', '1140', '85', '14', TO_DATE('2020-04-17 08:58:43', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('162', '飞克手表 男表皮带手表 防水商务休闲男士手表 腕表 石英表手表', '正品进口机芯 蓝宝石镜面 指针星期显示', '1999', '1199.4', '82', '14', TO_DATE('2020-04-17 08:58:43', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('163', '劳迪莱斯男士手包休闲手拿包牛皮大容量钱包男包软面小包包手抓包', '牛皮手包 耐磨耐用 多卡位设计', '185', '157.25', '24', '13', TO_DATE('2020-04-17 08:59:41', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('164', '英伦邦纹男士手包牛皮大容量真皮手拿包手抓包双拉链商务正品软皮', '意大利牛皮 纹路自然漂亮 更耐用更尊贵 手感棒', '588', '411.6', '42', '13', TO_DATE('2020-04-17 08:59:41', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('165', '唯美诺新款男士手包男包真皮大容量小羊皮手拿包信封包软皮夹包潮', '优质羊皮 大容量 品牌做工 超软手感 终身包保修', '498', '448.2', '84', '13', TO_DATE('2020-04-17 08:59:41', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('166', '宾度 男士手包真皮大容量手拿包牛皮个性潮男包手抓包软皮信封包', '专注品质领卷 顺丰包邮 头层牛皮 大容量 软皮', '568', '511.2', '79', '13', TO_DATE('2020-04-17 08:59:41', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('167', 'MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮', '无理由退换货 赠退货运费险', '888', '799.2', '98', '13', TO_DATE('2020-04-17 08:59:41', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('168', '【新】罗蒙羊毛西服套装男修身商务职业装2016年秋季新款#1S51126', NULL, '2199', '1759.2', '96', '12', TO_DATE('2020-04-17 09:00:48', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('169', '男士西服套装修身英伦竖条纹休闲西装男套装三件套新郎结婚礼服春', '今赠马甲衬衫 精致竖条纹 奢华品质 精细做工', '729', '437.4', '30', '12', TO_DATE('2020-04-17 09:00:48', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('170', '西服套装男夏季新郎结婚礼服三件套伴郎服薄款西服大码西装男套装', '亮眼帅气 优雅休闲 格调气质 时尚格子 结婚首选', '1988', '1491', '10', '12', TO_DATE('2020-04-17 09:00:48', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('171', '三件套Actionmates新款韩版修身休闲格子西服套装男士小西装礼服', '韩国进口面料 韩版立体裁剪 版型好 送领结领带', '799', '479.4', '56', '12', TO_DATE('2020-04-17 09:00:48', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('172', 'Action mates韩版修身男士西服套装发型师休闲小西装结婚礼服潮', '包邮申通 韩版修身 版型好 不容错过', '699', '419.4', '79', '12', TO_DATE('2020-04-17 09:00:48', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SCOTT"."PRODUCT" VALUES ('173', 'DOGEXI透气真皮男鞋子雕花男士休闲鞋反绒皮英伦低帮板鞋男潮鞋秋', '牛皮鞋面 猪皮内里 标准运动鞋码', '289', '202.3', '21', '11', TO_DATE('2020-04-17 09:01:40', 'SYYYY-MM-DD HH24:MI:SS'));
 
 -- ----------------------------
 -- Table structure for PRODUCT_IMAGE
@@ -260,15 +363,151 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Records of "PRODUCT_IMAGE"
 -- ----------------------------
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('340', '146', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('277', '120', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('278', '120', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('373', '173', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('374', '174', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('375', '175', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('388', '187', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('389', '188', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('56', '27', 'type_single');
-INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('53', '30', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('55', '28', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('61', '31', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('115', '35', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('116', '35', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('117', '35', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('118', '35', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('54', '29', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('57', '26', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('58', '34', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('59', '33', 'type_single');
 INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('60', '32', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('265', '24', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('254', '30', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('309', '127', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('307', '122', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('203', '122', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('204', '122', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('205', '122', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('249', '30', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('250', '30', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('251', '30', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('255', '30', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('308', '127', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('302', '121', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('303', '121', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('274', '121', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('275', '121', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('279', '120', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('298', '119', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('296', '119', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('297', '119', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('310', '127', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('311', '127', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('316', '126', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('293', '111', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('317', '126', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('318', '125', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('320', '127', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('321', '123', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('323', '131', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('324', '130', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('326', '128', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('329', '135', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('345', '151', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('335', '140', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('336', '139', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('339', '147', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('341', '145', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('346', '150', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('348', '149', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('350', '157', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('352', '155', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('354', '154', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('356', '158', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('358', '160', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('359', '161', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('360', '162', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('362', '160', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('363', '167', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('366', '165', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('367', '166', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('369', '169', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('370', '170', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('372', '172', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('383', '182', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('378', '176', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('381', '180', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('387', '186', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('403', '29', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('394', '192', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('402', '29', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('404', '29', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('405', '29', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('113', '35', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('114', '35', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('306', '122', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('304', '122', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('305', '122', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('199', '122', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('206', '122', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('207', '122', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('252', '30', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('256', '30', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('257', '30', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('258', '30', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('271', '121', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('301', '121', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('299', '121', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('272', '121', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('273', '121', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('280', '120', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('300', '121', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('292', '111', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('289', '111', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('290', '111', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('291', '111', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('294', '119', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('295', '119', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('325', '129', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('313', '126', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('314', '126', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('315', '126', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('319', '124', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('322', '132', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('337', '142', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('328', '136', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('330', '134', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('331', '133', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('332', '137', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('334', '141', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('338', '138', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('342', '144', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('343', '143', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('344', '152', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('347', '149', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('349', '148', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('361', '162', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('353', '153', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('355', '156', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('357', '159', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('364', '163', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('365', '164', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('368', '168', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('371', '171', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('377', '177', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('379', '178', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('380', '179', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('382', '181', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('384', '183', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('385', '184', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('386', '185', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('390', '189', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('392', '190', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('393', '191', 'type_single');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('401', '29', 'type_detail');
+INSERT INTO "SCOTT"."PRODUCT_IMAGE" VALUES ('415', '35', 'type_detail');
 
 -- ----------------------------
 -- Table structure for PROPERTY
@@ -299,9 +538,33 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Records of "PROPERTY"
 -- ----------------------------
-INSERT INTO "SCOTT"."PROPERTY" VALUES ('72', '23', '马桶的质量很好');
-INSERT INTO "SCOTT"."PROPERTY" VALUES ('74', '22', '好沙发');
-INSERT INTO "SCOTT"."PROPERTY" VALUES ('75', '24', '好电视');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('413', '23', '型号:');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('414', '23', '品牌:');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('72', '23', '水效等级：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('74', '22', '品牌名称：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('75', '24', 'CPU：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('90', '24', '操作系统：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('99', '24', '能效等级：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('102', '24', '售后服务：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('103', '24', '颜色：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('210', '22', '几人座：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('211', '22', '产地：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('212', '22', '是否组装：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('213', '22', '颜色：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('214', '22', '重量：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('215', '22', '适用对象：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('406', '23', '盖板是否缓冲：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('408', '23', '坐便冲水量:');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('411', '23', '产地:');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('412', '23', '材质:');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('98', '24', '产品尺寸：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('100', '24', '品牌：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('101', '24', '型号：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('208', '22', '型号：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('209', '22', '材料：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('407', '23', '冲水按键类型：');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('409', '23', '排水方式:');
+INSERT INTO "SCOTT"."PROPERTY" VALUES ('410', '23', '坐便器冲水方式:');
 
 -- ----------------------------
 -- Table structure for PROPERTY_VALUE
@@ -333,7 +596,58 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Records of "PROPERTY_VALUE"
 -- ----------------------------
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('216', '122', '215', '所有人');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('217', '122', '214', '120');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('218', '122', '213', '多色可选');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('219', '122', '212', '否');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('220', '122', '211', '上海');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('221', '122', '210', '5人');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('222', '122', '209', '金属');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('223', '122', '208', 'JO-1031#');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('224', '122', '74', '雅居汇');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('91', '30', '90', '安卓');
 INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('76', '30', '75', '夏普39cun');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('92', '29', '90', '安卓');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('93', '29', '75', '12he');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('225', '121', '215', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('395', '29', '103', '黑色');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('396', '29', '102', '一年保修');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('397', '29', '101', '65S1');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('398', '29', '100', '长虹');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('399', '29', '99', '2级');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('400', '29', '98', '65/70');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('416', '35', '414', '纳蒂兰卡');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('417', '35', '413', '8155');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('418', '35', '412', '陶瓷');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('419', '35', '411', '中国大陆');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('420', '35', '410', '虹吸式');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('228', '121', '212', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('226', '121', '214', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('227', '121', '213', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('229', '121', '211', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('230', '121', '210', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('231', '121', '209', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('232', '121', '208', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('233', '121', '74', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('234', '30', '103', '黑色');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('235', '30', '102', '一年保修');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('236', '30', '101', 'LE39D71S');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('237', '30', '100', '夏普');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('421', '35', '409', '地排水');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('422', '35', '408', '3/4.5L');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('423', '35', '407', '上按两端式');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('424', '35', '406', '缓冲');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('425', '35', '72', '2级');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('238', '30', '99', '2级');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('239', '30', '98', '40/42/43');
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('240', '27', '103', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('241', '27', '102', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('242', '27', '101', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('243', '27', '100', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('244', '27', '99', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('245', '27', '98', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('246', '27', '90', NULL);
+INSERT INTO "SCOTT"."PROPERTY_VALUE" VALUES ('247', '27', '75', NULL);
 
 -- ----------------------------
 -- Table structure for USERS
@@ -364,10 +678,16 @@ DISABLE ROW MOVEMENT
 -- ----------------------------
 -- Records of "USERS"
 -- ----------------------------
+INSERT INTO "SCOTT"."USERS" VALUES ('443', 'yujiafei1', 'YUjf980102..');
 INSERT INTO "SCOTT"."USERS" VALUES ('77', 'admin1', 'admin1');
 INSERT INTO "SCOTT"."USERS" VALUES ('85', 'admi', 'admin');
 INSERT INTO "SCOTT"."USERS" VALUES ('87', '1111', '1111');
+INSERT INTO "SCOTT"."USERS" VALUES ('94', 'admin123', '1');
+INSERT INTO "SCOTT"."USERS" VALUES ('95', 'admin213', 'admin');
 INSERT INTO "SCOTT"."USERS" VALUES ('78', 'admin2', 'admin2');
+INSERT INTO "SCOTT"."USERS" VALUES ('442', 'yujiafei', 'yujiafei');
+INSERT INTO "SCOTT"."USERS" VALUES ('444', '1', 'a1234');
+INSERT INTO "SCOTT"."USERS" VALUES ('445', 'yujiafei123', 'YUjf980102...');
 INSERT INTO "SCOTT"."USERS" VALUES ('8', 'admin', 'admin');
 
 -- ----------------------------
@@ -411,6 +731,7 @@ ALTER TABLE "SCOTT"."ORDER_" ADD CONSTRAINT "SYS_C0013393" PRIMARY KEY ("ID");
 -- Checks structure for table ORDER_
 -- ----------------------------
 ALTER TABLE "SCOTT"."ORDER_" ADD CONSTRAINT "SYS_C0013392" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "SCOTT"."ORDER_" ADD CONSTRAINT "SYS_C0014179" CHECK ("ONUMBER" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
 
 -- ----------------------------
 -- Primary Key structure for table ORDER_ITEM
